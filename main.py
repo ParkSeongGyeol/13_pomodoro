@@ -17,7 +17,7 @@ class PomodoroApp:
         self.root.geometry("350x550") # Increased height for new UI
         self.root.protocol("WM_DELETE_WINDOW", self.on_close)
 
-        # Logic / State
+        # Logic / State 
         self.planner = SessionPlanner()
         self.schedule = [] # List of steps
         self.current_step_index = -1
