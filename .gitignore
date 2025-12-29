@@ -1,4 +1,27 @@
-dist/
-build/
+# Python
 __pycache__/
-*.pyc
+*.py[cod]
+*$py.class
+
+# Distribution / Build
+build/
+dist/
+*.spec
+*.exe
+
+# Nuitka
+*.onefile-build
+*.build
+*.dist
+*.o
+*.pyd
+
+# Application specific
+focus_log.csv
+assets/icon.png # Source generated file (optional to exclude, but let's keep it if small)
+# Actually user wants to push "work done", so maybe keep assets. 
+# But usually we exclude large binaries. icon.ico is small.
+
+# IDE
+.vscode/
+.idea/

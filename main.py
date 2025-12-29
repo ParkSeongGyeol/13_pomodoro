@@ -10,12 +10,33 @@ import csv
 from datetime import datetime
 from planner import SessionPlanner
 
+import sys
+
+def resource_path(relative_path):
+    """ Get absolute path to resource, works for dev and for PyInstaller/Nuitka """
+    try:
+        # PyInstaller creates a temp folder and stores path in _MEIPASS
+        # Nuitka also supports this if structured correctly or we can use __file__ dir
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
+
 class PomodoroApp:
     def __init__(self, root):
         self.root = root
         self.root.title("Focus Timer")
         self.root.geometry("350x550") # Increased height for new UI
         self.root.protocol("WM_DELETE_WINDOW", self.on_close)
+        
+        # Icon Setup
+        icon_path = resource_path(os.path.join("assets", "icon.ico"))
+        if os.path.exists(icon_path):
+            self.root.iconbitmap(icon_path)
+            self.icon_path = icon_path # Store for tray
+        else:
+            self.icon_path = None
 
         # Logic / State 
         self.planner = SessionPlanner()
@@ -323,6 +344,10 @@ class PomodoroApp:
 
     # --- Tray Icon Logic (Unchanged) ---
     def create_image(self):
+        if self.icon_path and os.path.exists(self.icon_path):
+            return Image.open(self.icon_path)
+        
+        # Fallback if no icon
         width = 64
         height = 64
         color1 = "black"
