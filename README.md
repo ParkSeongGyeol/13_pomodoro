@@ -59,9 +59,8 @@ python main.py
 ### 빌드 명령어
 터미널(Powershell 권장)에서 아래 명령어를 실행하세요.
 
-```powershell
-python -m nuitka --assume-yes-for-downloads --standalone --onefile --enable-plugin=tk-inter --windows-disable-console main.py
-```
+python -m nuitka --assume-yes-for-downloads --standalone --onefile --enable-plugin=tk-inter --windows-disable-console --include-data-file=assets/icon.ico=assets/icon.ico main.py
+
 
 - `--standalone`: 독립 실행형 배포
 - `--onefile`: 단일 `.exe` 파일로 생성
