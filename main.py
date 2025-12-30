@@ -366,7 +366,7 @@ class PomodoroApp:
             self.root.withdraw()
             if not self.tray_icon:
                 image = self.create_image()
-                menu = (pystray.MenuItem('Show', self.on_tray_show),
+                menu = (pystray.MenuItem('Show', self.on_tray_show, default=True),
                         pystray.MenuItem('Quit', self.on_tray_quit))
                 self.tray_icon = pystray.Icon("name", image, "Focus Timer", menu)
                 threading.Thread(target=self.tray_icon.run, daemon=True).start()
