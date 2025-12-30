@@ -59,13 +59,13 @@ python main.py
 ### 빌드 명령어
 터미널(Powershell 권장)에서 아래 명령어를 실행하세요.
 
-python -m nuitka --assume-yes-for-downloads --standalone --onefile --enable-plugin=tk-inter --windows-disable-console --include-data-file=assets/icon.ico=assets/icon.ico main.py
+python -m nuitka --assume-yes-for-downloads --standalone --onefile --enable-plugin=tk-inter --windows-console-mode=disable --include-data-file=assets/icon.ico=assets/icon.ico --windows-icon-from-ico=assets/icon.ico main.py
 
 
 - `--standalone`: 독립 실행형 배포
 - `--onefile`: 단일 `.exe` 파일로 생성
 - `--enable-plugin=tk-inter`: Tkinter UI 지원 활성화
-- `--windows-disable-console`: 실행 시 검은색 콘솔 창 숨기기
+- `--windows-console-mode=disable`: 실행 시 검은색 콘솔 창 숨기기
 
 빌드가 완료되면 `main.exe` 파일이 생성됩니다.
 
